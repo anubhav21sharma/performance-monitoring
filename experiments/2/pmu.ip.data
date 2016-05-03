@@ -1,0 +1,24 @@
+86.3 	 _Z13largeFunctionx 	 400bbd	 imul -0x8(%rbp),%rax
+8.6 	 _Z14mediumFunctionx 	 400bf5	 imul -0x8(%rbp),%rax
+2.3 	 _Z13largeFunctionx 	 400bc2	 mov %rax,-0x10(%rbp)
+1.3 	 _Z13largeFunctionx 	 400bb9	 mov -0x10(%rbp),%rax
+0.8 	 _Z13largeFunctionx 	 400bc6	 addq $0x1,-0x8(%rbp)
+0.3 	 _Z14mediumFunctionx 	 400bfa	 mov %rax,-0x10(%rbp)
+0.1 	 _Z12tinyFunctionx 	 400c2d	 imul -0x8(%rbp),%rax
+0.1 	 _Z14mediumFunctionx 	 400bf1	 mov -0x10(%rbp),%rax
+0.1 	 _Z13largeFunctionx 	 400bcf	 cmp -0x18(%rbp),%rax
+0.0 	 main 	 400d63	 mov -0x8(%rbp),%eax
+0.0 	 main 	 400d5f	 mov -0x10(%rbp),%rdx
+0.0 	 main 	 400d39	 mov $0x400f9b,%esi
+0.0 	 _Z12tinyFunctionx 	 400c3f	 cmp -0x18(%rbp),%rax
+0.0 	 _Z12tinyFunctionx 	 400c36	 addq $0x1,-0x8(%rbp)
+0.0 	 _Z12tinyFunctionx 	 400c32	 mov %rax,-0x10(%rbp)
+0.0 	 _Z12tinyFunctionx 	 400c29	 mov -0x10(%rbp),%rax
+0.0 	 _Z14mediumFunctionx 	 400c0b	 jl 400bf1 <_Z14mediumFunctionx+0x1a>
+0.0 	 _Z14mediumFunctionx 	 400c07	 cmp -0x18(%rbp),%rax
+0.0 	 _Z14mediumFunctionx 	 400c03	 mov -0x8(%rbp),%rax
+0.0 	 _Z14mediumFunctionx 	 400bfe	 addq $0x1,-0x8(%rbp)
+0.0 	 _Z13largeFunctionx 	 400bd3	 jl 400bb9 <_Z13largeFunctionx+0x3c>
+0.0 	 _Z13largeFunctionx 	 400bcb	 mov -0x8(%rbp),%rax
+0.0 	 _Z27stopCountingAndGiveMeValues9pmuStruct 	 400b5c	 mov 0x201672(%rip),%eax # 6021d4 <fd>
+0.0 	  	 400950	 jmpq *0x20170a(%rip) # 602060 <_GLOBAL_OFFSET_TABLE_+0x60>

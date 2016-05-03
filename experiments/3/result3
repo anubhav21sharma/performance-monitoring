@@ -1,0 +1,49 @@
+*Note - Please use `ulimit -s hard` to increase stack size before running this example.
+
+Count of number of LLC misses
+---------------------------------
+
+Output given by perf:
+
+Per function:
+-------------
+  95.69%  test3    test3             [.] _Z11badFunctioni
+   0.12%  test3    test3             [.] _Z12goodFunctioni
+
+
+Per ip:
+-------
+
+ 10.52 │401978:   mov    -0x38(%rbp),%rax   
+  8.29 │401547:   mov    %rcx,%rdi
+  2.21 │4017d0:   mov    -0x38(%rbp),%rax          
+  1.73 │401571:   mov    %r10,%r8 
+
+
+
+=========================================================================
+
+Output given my our module:
+
+Per function:
+------------
+96.6  _Z11badFunctioni
+2.6   _Z12goodFunctioni
+0     _Z27stopCountingAndGiveMeValues9pmuStruct
+0     _Z27startCountingForThisProcess9pmuStruct
+0     main
+
+
+
+Per ip:
+-------
+
+7.8      _Z11badFunctioni        401978  mov -0x38(%rbp),%rax
+5.6      _Z11badFunctioni        401547  mov %rcx,%rdi
+3.3      _Z11badFunctioni        401789  mov -0x38(%rbp),%rax
+2.9      _Z11badFunctioni        401746  movslq %edx,%rsi
+2.6      _Z11badFunctioni        4017d0  mov -0x38(%rbp),%rax
+2.5      _Z11badFunctioni        4018b3  mov -0x38(%rbp),%rax
+2.5      _Z11badFunctioni        4017a5  mov %r10,%r8
+2.5      _Z12goodFunctioni       400df4  mov %eax,(%rdx,%rsi,4)
+

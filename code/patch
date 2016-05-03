@@ -1,0 +1,49 @@
+diff -uNr linux-4.3.3/kernel/exit.c linux-4.3.3.current/kernel/exit.c
+--- linux-4.3.3/kernel/exit.c	2015-12-15 11:11:43.000000000 +0530
++++ linux-4.3.3.current/kernel/exit.c	2016-04-10 03:30:35.471406374 +0530
+@@ -650,9 +650,21 @@
+ static inline void check_stack_usage(void) {}
+ #endif
+ 
++/*
++*	[Anubhav] Task exit hook added here.
++*/
++
++void (*taskExitHook)(struct task_struct *) = NULL;
++EXPORT_SYMBOL(taskExitHook);
++
++
+ void do_exit(long code)
+ {
+ 	struct task_struct *tsk = current;
++	if(taskExitHook!=NULL){
++		taskExitHook(tsk);
++	}
++	
+ 	int group_dead;
+ 	TASKS_RCU(int tasks_rcu_i);
+ 
+diff -uNr linux-4.3.3/kernel/sched/core.c linux-4.3.3.current/kernel/sched/core.c
+--- linux-4.3.3/kernel/sched/core.c	2015-12-15 11:11:43.000000000 +0530
++++ linux-4.3.3.current/kernel/sched/core.c	2016-04-29 20:55:50.571459831 +0530
+@@ -3054,6 +3054,9 @@
+  *
+  * WARNING: must be called with preemption disabled!
+  */
++void (*contextSwitchHook)(struct task_struct*, struct task_struct*, int) = NULL;
++EXPORT_SYMBOL(contextSwitchHook);
++
+ static void __sched __schedule(void)
+ {
+ 	struct task_struct *prev, *next;
+@@ -3118,7 +3121,9 @@
+ 		rq->nr_switches++;
+ 		rq->curr = next;
+ 		++*switch_count;
+-
++		if(contextSwitchHook){
++			contextSwitchHook(prev,next,cpu);
++		}
+ 		rq = context_switch(rq, prev, next); /* unlocks the rq */
+ 		cpu = cpu_of(rq);
+ 	} else {

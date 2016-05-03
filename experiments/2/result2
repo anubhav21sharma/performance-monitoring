@@ -1,0 +1,31 @@
+Count of number of CPU cycles in each function.
+----------------------------------------------------------------------------
+
+Output given by perf:
+
+  90.81%  test2    test2             [.] _Z13largeFunctionx
+   9.08%  test2    test2             [.] _Z14mediumFunctionx
+   0.03%  test2    [kernel.vmlinux]  [k] ioread32
+   0.02%  test2    test2             [.] _Z12tinyFunctionx
+   0.01%  test2    [kernel.vmlinux]  [k] task_numa_work
+   0.01%  test2    [kernel.vmlinux]  [k] retint_user
+   0.01%  test2    [kernel.vmlinux]  [k] __do_softirq
+   0.01%  test2    [kernel.vmlinux]  [k] update_vsyscall
+   0.01%  test2    [kernel.vmlinux]  [k] add_interrupt_randomness
+   0.01%  test2    [kernel.vmlinux]  [k] do_timer
+   0.01%  test2    [kernel.vmlinux]  [k] __slab_free
+   0.01%  test2    [kernel.vmlinux]  [k] _raw_spin_lock
+   0.01%  test2    [kernel.vmlinux]  [k] ktime_get
+   0.00%  test2    [kernel.vmlinux]  [k] native_write_msr_safe
+
+
+==============================================================================
+
+Output given by our module:
+
+	90.7  _Z13largeFunctionx
+	9     _Z14mediumFunctionx
+	0.1   _Z12tinyFunctionx
+	0     _Z27stopCountingAndGiveMeValues9pmuStruct
+	0     main
+

@@ -1,0 +1,13 @@
+44.3 	 _ZL12testFunctionv 	 400c12	 cltq
+42.5 	 _ZL12testFunctionv 	 400c2c	 jbe 400bf3 <_ZL12testFunctionv+0x76>
+8.9 	 _ZL12testFunctionv 	 400c22	 cmpl $0x7fff,-0x20010(%rbp)
+1.7 	 _ZL12testFunctionv 	 400c14	 add %rax,-0x20008(%rbp)
+1.4 	 _ZL12testFunctionv 	 400c1b	 addl $0x1,-0x20010(%rbp)
+0.8 	 _ZL12testFunctionv 	 400bf3	 mov -0x20010(%rbp),%eax
+0.2 	 _ZL12testFunctionv 	 400c0b	 mov -0x20000(%rbp,%rax,4),%eax
+0.2 	 _ZL12testFunctionv 	 400c00	 cmp $0x7f,%eax
+0.0 	 _ZL12testFunctionv 	 400c3f	 jbe 400be7 <_ZL12testFunctionv+0x6a>
+0.0 	 _ZL12testFunctionv 	 400c35	 cmpl $0x1869f,-0x20014(%rbp)
+0.0 	 _ZL12testFunctionv 	 400c05	 mov -0x20010(%rbp),%eax
+0.0 	 _ZL12testFunctionv 	 400bf9	 mov -0x20000(%rbp,%rax,4),%eax
+0.0 	 _ZL12testFunctionv 	 400be7	 movl $0x0,-0x20010(%rbp)

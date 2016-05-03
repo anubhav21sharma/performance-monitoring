@@ -1,0 +1,60 @@
+Count of number of branch mispredictions:
+----------------------------------------
+
+Module Output:
+
+  % ./analyze.sh ./experiments/test1                                          !406
+48.0 	 _ZL12testFunctionv 	 400fc6	 cltq
+40.0 	 _ZL12testFunctionv 	 400fe0	 jbe 400fa7 <_ZL12testFunctionv+0x76>
+8.3 	 _ZL12testFunctionv 	 400fd6	 cmpl $0x7fff,-0x20010(%rbp)
+1.7 	 _ZL12testFunctionv 	 400fc8	 add %rax,-0x20008(%rbp)
+1.2 	 _ZL12testFunctionv 	 400fa7	 mov -0x20010(%rbp),%eax
+0.6 	 _ZL12testFunctionv 	 400fcf	 addl $0x1,-0x20010(%rbp)
+0.1 	 _ZL12testFunctionv 	 400fb4	 cmp $0x7f,%eax
+0.0 	 _ZL12testFunctionv 	 400ff3	 jbe 400f9b <_ZL12testFunctionv+0x6a>
+0.0 	 _ZL12testFunctionv 	 400fe9	 cmpl $0x1869f,-0x20014(%rbp)
+0.0 	 _ZL12testFunctionv 	 400fbf	 mov -0x20000(%rbp,%rax,4),%eax
+0.0 	 _ZL12testFunctionv 	 400fb9	 mov -0x20010(%rbp),%eax
+0.0 	 _ZL12testFunctionv 	 400fad	 mov -0x20000(%rbp,%rax,4),%eax
+0.0 	 _ZL12testFunctionv 	 400fa5	 jmp 400fd6 <_ZL12testFunctionv+0xa5>
+0.0 	 _ZL12testFunctionv 	 400f9b	 movl $0x0,-0x20010(%rbp)
+
+The first column represents the percentage of event measurements.
+
+==============================================================================
+
+Perf Output:
+
+       │      sub    %edx,%eax
+       │      mov    %eax,%edx
+       │      mov    -0x20018(%rbp),%eax
+       │      mov    %edx,-0x20000(%rbp,%rax,4)
+       │      addl   $0x1,-0x20018(%rbp)
+       │4e:   cmpl   $0x7fff,-0x20018(%rbp)
+       │    ↑ jbe    28
+       │      movq   $0x0,-0x20008(%rbp)
+       │      movl   $0x0,-0x20014(%rbp)
+       │    ↓ jmp    bf
+  0.00 │71:   movl   $0x0,-0x20010(%rbp)
+       │    ↓ jmp    ac
+  1.20 │7d:   mov    -0x20010(%rbp),%eax
+  0.00 │      mov    -0x20000(%rbp,%rax,4),%eax
+  0.12 │      cmp    $0x7f,%eax
+       │    ↓ jle    a5
+  0.00 │      mov    -0x20010(%rbp),%eax
+  0.13 │      mov    -0x20000(%rbp,%rax,4),%eax
+ 49.07 │      cltq
+  1.38 │      add    %rax,-0x20008(%rbp)
+  0.41 │a5:   addl   $0x1,-0x20010(%rbp)
+  8.54 │ac:   cmpl   $0x7fff,-0x20010(%rbp)
+ 39.14 │    ↑ jbe    7d
+       │      addl   $0x1,-0x20014(%rbp)
+       │bf:   cmpl   $0x1869f,-0x20014(%rbp)
+  0.00 │    ↑ jbe    71
+       │      mov    -0x20008(%rbp),%rax
+       │      leaveq
+       │    ← retq
+
+
+
+
